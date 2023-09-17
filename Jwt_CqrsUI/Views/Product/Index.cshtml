@@ -1,0 +1,43 @@
+﻿@model List<ProductModel>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+@if(Model!=null)
+{
+    <table class="table">
+        <thead>
+            <tr>
+               
+                <th scope="col">İsim</th>
+                <th scope="col">Fiyat</th>
+                <th scope="col">Stok</th>
+                <th scope="col">Kategori</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                    <tr>
+                        <th scope="row">@item.Name</th>
+                        <td>@item.Price</td>
+                        <td>@item.Stock</td>
+                        <td>@item.CategoryId</td>
+                    <td>
+                        <a asp-action="Remove" asp-controller="Product" asp-route-id="@item.Id">Sil</a>
+                    </td>
+                    </tr>
+            }
+
+
+        </tbody>
+    </table>
+}
+else
+{
+    <div>
+        <p>Hata</p>
+    </div>
+}
